@@ -14,7 +14,7 @@ TagManager:
   - Ground
   - Background
   - Room
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 1412986199
+    locked: 0
+  - name: New Layer
+    uniqueID: 2625855631
     locked: 0
