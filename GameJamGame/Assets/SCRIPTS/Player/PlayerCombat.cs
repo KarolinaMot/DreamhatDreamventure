@@ -4,21 +4,30 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    public CharacterController2D controller;
     // Update is called once per frame
     public Animator animator;
     public Animator handAnimator;
+    public Animator slashAnimator;
+
     public Transform attackPoint;
-    public float attackRange = 0.5f;
+    public GameObject slash;
+    public GameObject poof;
     public LayerMask enemies;
+
     public bool canTakeDamage = true;
+    public float attackRange = 0.5f;
 
     public int attackDamage = 1;
     public int playerHealth = 3;
+    public float playerDefense = 0;
     public int currentHealth = 3;
     public int timer = 0;
 
+
     private void Awake()
     {
+        slash.SetActive(false);
         currentHealth = playerHealth;
     }
     void Update()
@@ -27,22 +36,23 @@ public class PlayerCombat : MonoBehaviour
         {
             Attack();
         }
-
         TakeDamage();
         Tick();
+        if(slash.activeSelf)
+            CheckAnimationEnd();
     }
     void Attack()
     {
         animator.SetTrigger("isAttacking");
         handAnimator.SetTrigger("isAttacking");
+        slash.SetActive(true);
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemies);
 
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
     }
-
     void TakeDamage()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 0.2f, enemies);
@@ -52,16 +62,28 @@ public class PlayerCombat : MonoBehaviour
             if (canTakeDamage)
             {
                 Debug.Log("damage taken");
+                controller.knockbackCount = controller.knockbackLength;
+
+                if (enemy.transform.position.x > transform.position.x)
+                    controller.knockFromRight = true;
+                else
+                    controller.knockFromRight = false;
+
                 currentHealth--;
                 canTakeDamage = false;
             }
-                
         }
 
         if(currentHealth <= 0)
         {
-            Time.timeScale = 0;
+            Death();
         }
+    }
+
+    void Death()
+    {
+        Instantiate(poof, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
@@ -73,6 +95,10 @@ public class PlayerCombat : MonoBehaviour
         
     }
 
+    void CheckAnimationEnd()
+    {      if(slashAnimator.GetCurrentAnimatorStateInfo(0).IsName("Empty"))
+                slash.SetActive(false);        
+    }
     void Tick()
     {
         if (!canTakeDamage)

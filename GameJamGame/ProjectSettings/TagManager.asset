@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ManaSprite
+  - HealthSprite
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,8 @@ TagManager:
   - Background
   - Room
   - Enemy
-  - 
-  - 
+  - Coin
+  - Exp
   - 
   - 
   - 
@@ -53,6 +55,9 @@ TagManager:
   - name: Ground
     uniqueID: 1412986199
     locked: 0
-  - name: New Layer
+  - name: Player
+    uniqueID: 3749588403
+    locked: 0
+  - name: Foreground
     uniqueID: 2625855631
     locked: 0

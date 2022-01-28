@@ -24,6 +24,17 @@ public class CharacterController2D : MonoBehaviour
     CapsuleCollider2D mainCollider;
     Transform t;
 
+    [SerializeField]  float knockBack;
+    public float knockbackLength;
+    public float knockbackCount;
+    public bool knockFromRight;
+
+    public int moneyNum = 0;
+    public float xpNum = 0;
+    private float maxXp = 1;
+    public LayerMask coins;
+    public LayerMask xp;
+
     // Use this for initialization
     void Start()
     {
@@ -45,42 +56,12 @@ public class CharacterController2D : MonoBehaviour
     void Update()
     {
         UpdateAnimator();
-        // Movement controls
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && (isGrounded || Mathf.Abs(r2d.velocity.x) > 0.01f))
-        {
-            moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
-        }
-        else
-        {
-            if (isGrounded || r2d.velocity.magnitude < 0.01f)
-            {
-                moveDirection = 0;
-            }
-        }
-
-        // Change facing direction
-        if (moveDirection != 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-        {
-            isMoving = true;
-            if (moveDirection > 0 && !facingRight)
-            {
-                facingRight = true;
-                t.localScale = new Vector3(Mathf.Abs(t.localScale.x), t.localScale.y, transform.localScale.z);
-            }
-            if (moveDirection < 0 && facingRight)
-            {
-                facingRight = false;
-                t.localScale = new Vector3(-Mathf.Abs(t.localScale.x), t.localScale.y, t.localScale.z);
-            }
-        }
-        else
-            isMoving = false;
-
-        // Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-        {
-            r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
-        }
+        TakeMoney();
+        TakeXp();
+        MovementControls();
+        FlipPlayer();
+        Jumping();
+        
 
         // Camera follow
         if (mainCamera)
@@ -112,12 +93,85 @@ public class CharacterController2D : MonoBehaviour
         }
 
         // Apply movement velocity
-        if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-        r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && knockbackCount <= 0)
+            r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
+
+        if (knockbackCount > 0)
+            KnockBack();
 
         // Simple debug
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, colliderRadius, 0), isGrounded ? Color.green : Color.red);
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(colliderRadius, 0, 0), isGrounded ? Color.green : Color.red);
+    }
+
+    void Jumping()
+    {
+        // Jumping
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
+        }
+    }
+
+    void FlipPlayer()
+    {
+        // Change facing direction
+        if (moveDirection != 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            isMoving = true;
+            if (moveDirection > 0 && !facingRight)
+            {
+                facingRight = true;
+                t.localScale = new Vector3(Mathf.Abs(t.localScale.x), t.localScale.y, transform.localScale.z);
+            }
+            if (moveDirection < 0 && facingRight)
+            {
+                facingRight = false;
+                t.localScale = new Vector3(-Mathf.Abs(t.localScale.x), t.localScale.y, t.localScale.z);
+            }
+        }
+        else
+            isMoving = false;
+    }
+
+    void MovementControls()
+    {
+        // Movement controls
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && (isGrounded || Mathf.Abs(r2d.velocity.x) > 0.01f))
+        {
+            moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
+        }
+        else
+        {
+            if (isGrounded || r2d.velocity.magnitude < 0.01f)
+            {
+                moveDirection = 0;
+            }
+        }
+    }
+
+    void TakeMoney()
+    {
+        Collider2D[] allCoins = Physics2D.OverlapCircleAll(transform.position, 0.2f, coins);
+
+        foreach (Collider2D coin in allCoins)
+        {
+            Destroy(coin.gameObject);
+            moneyNum++;
+        }
+    }
+
+    void TakeXp()
+    {
+        Collider2D[] allXp = Physics2D.OverlapCircleAll(transform.position, 0.2f, xp);
+
+        foreach (Collider2D particle in allXp)
+        {
+            Destroy(particle.gameObject);
+            xpNum+=0.1f;
+            if (xpNum > maxXp)
+                xpNum = maxXp;
+        }
     }
 
     void UpdateAnimator()
@@ -126,5 +180,15 @@ public class CharacterController2D : MonoBehaviour
         handAnim.SetBool("isMoving", isMoving);
         anim.SetBool("isJumping", !isGrounded);
         handAnim.SetBool("isJumping", !isGrounded);
+    }
+
+    void KnockBack()
+    {
+        if(knockFromRight)
+            r2d.velocity = new Vector2(-knockBack, knockBack);
+        else
+            r2d.velocity = new Vector2(knockBack, knockBack);
+
+        knockbackCount -= Time.deltaTime;
     }
 }
