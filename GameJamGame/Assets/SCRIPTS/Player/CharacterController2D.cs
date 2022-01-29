@@ -13,6 +13,7 @@ public class CharacterController2D : MonoBehaviour
     public float jumpHeight = 6.5f;
     public float gravityScale = 1.5f;
     public Camera mainCamera;
+    int doubleJump =0;
 
 
     bool facingRight = true;
@@ -35,6 +36,8 @@ public class CharacterController2D : MonoBehaviour
     private float maxXp = 1;
     public LayerMask coins;
     public LayerMask xp;
+
+    public float camHeight;
 
     // Use this for initialization
     void Start()
@@ -67,7 +70,7 @@ public class CharacterController2D : MonoBehaviour
         // Camera follow
         if (mainCamera)
         {
-            mainCamera.transform.position = new Vector3(t.position.x, cameraPos.y, cameraPos.z);
+            mainCamera.transform.position = new Vector3(t.position.x, t.position.y+camHeight, cameraPos.z);
         }
         
     }
@@ -88,6 +91,7 @@ public class CharacterController2D : MonoBehaviour
                 if (colliders[i] != mainCollider)
                 {
                     isGrounded = true;
+                    doubleJump = 0;
                     break;
                 }
             }
@@ -108,9 +112,10 @@ public class CharacterController2D : MonoBehaviour
     void Jumping()
     {
         // Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        if (Input.GetKeyDown(KeyCode.Space) && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && doubleJump<1)
         {
             r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
+            doubleJump++;
         }
     }
 

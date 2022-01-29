@@ -21,7 +21,7 @@ public class terminalCode : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.name == "Player")
+        if(collision.gameObject.name == "GoodPlayer" || collision.gameObject.name == "BadPlayer")
         {
             textOpen.SetActive(true);
             textShown = true;
@@ -31,7 +31,7 @@ public class terminalCode : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.name == "GoodPlayer" || collision.gameObject.name == "BadPlayer")
         {
             textOpen.SetActive(false);
             textShown = false;

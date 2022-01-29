@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe9dc5ba574a204d9f3d306772a1370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canAttack: 0
+  canAttack: 1
   controller: {fileID: 3456131864871293787}
   animator: {fileID: 3456131865728768725}
   handAnimator: {fileID: 1730845439}

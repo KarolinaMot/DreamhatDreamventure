@@ -61,7 +61,7 @@ public class PlayerCombat : MonoBehaviour
     }
     void TakeDamage()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 0.2f, enemies);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 0.4f, enemies);
 
         foreach (Collider2D enemy in hitEnemies)
         {

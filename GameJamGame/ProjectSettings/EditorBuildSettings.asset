@@ -5,7 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+  - enabled: 0
+    path: Assets/SCENES/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/SCENES/MainHub.unity
+    guid: 8ffa1e9559837c14c81ea8e35b8fcb4a
+  - enabled: 1
+    path: Assets/SCENES/NEW/KindergartenV1.unity
+    guid: a28f40d58e81308438c1b988fd49b9fe
+  - enabled: 1
+    path: Assets/SCENES/NEW/KindergartenV2.unity
+    guid: 7b8dbc796b9b790478214b4e4a298d1c
+  - enabled: 1
+    path: Assets/SCENES/NEW/KindergartenV3.unity
+    guid: 9ae01a86ddd6fce41a6abd9a46ba3869
+  - enabled: 1
+    path: Assets/SCENES/NEW/Basement.unity
+    guid: d5e1a5008481c634798cd5323bb18e1e
   m_configObjects: {}
