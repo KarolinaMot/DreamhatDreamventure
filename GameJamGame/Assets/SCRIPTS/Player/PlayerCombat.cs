@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    public bool canAttack;
+
     public CharacterController2D controller;
     // Update is called once per frame
     public Animator animator;
@@ -32,10 +34,14 @@ public class PlayerCombat : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (canAttack)
         {
-            Attack();
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Attack();
+            }
         }
+        
         TakeDamage();
         Tick();
         if(slash.activeSelf)

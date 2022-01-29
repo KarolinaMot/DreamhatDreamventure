@@ -14,6 +14,7 @@ public class CharacterController2D : MonoBehaviour
     public float gravityScale = 1.5f;
     public Camera mainCamera;
 
+
     bool facingRight = true;
     float moveDirection = 0;
     public bool isGrounded = false;
