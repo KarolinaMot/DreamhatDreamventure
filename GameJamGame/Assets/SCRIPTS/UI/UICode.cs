@@ -38,6 +38,7 @@ public class UICode : MonoBehaviour
     private int maxAtk = 3;
     private float maxDef = 0.4f;
     private int maxHp = 6;
+    private float shownXp = 0;
 
     private int shownHpPrice = 0;
     private int shownAtkPrice = 0;
@@ -48,12 +49,13 @@ public class UICode : MonoBehaviour
     private int defPricenum = 100;
     private int atkPricenum = 50;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        shownHp = playerCombat.playerHealth;
-        shownDef = playerCombat.playerDefense;
-        shownAtk = playerCombat.attackDamage;
+        shownHp = playerCombat.totalLifes;
+        shownDef = playerCombat.currentDef;
+        shownAtk = playerCombat.currentDamage;
         UpdateHealthBars();
     }
 
@@ -62,9 +64,9 @@ public class UICode : MonoBehaviour
     {
         DisableButtons();
 
-        currentHealthBar.fillAmount = (float)playerCombat.currentHealth / 10;
-        currentXp.fillAmount = (float)characterController2D.xpNum;
-        coinNumber.text = characterController2D.moneyNum.ToString();
+        currentHealthBar.fillAmount = playerCombat.currentLifes / 10;
+        currentXp.fillAmount = characterController2D.currentXp;
+        coinNumber.text = characterController2D.currentCoins.ToString();
 
         currentHpText.text = shownHp.ToString();
         currentAtkText.text = shownAtk.ToString();
@@ -76,7 +78,7 @@ public class UICode : MonoBehaviour
         shownPrice = (shownAtkPrice + shownDefPrice + shownHpPrice);
         fullPrice.text = shownPrice.ToString();
 
-        if(shownPrice > characterController2D.moneyNum)
+        if(shownPrice > characterController2D.currentCoins)
             purchase.interactable = false;
         else
             purchase.interactable = true;
@@ -84,12 +86,12 @@ public class UICode : MonoBehaviour
 
     void UpdateHealthBars()
     {
-        healthBackground.fillAmount = (float)playerCombat.playerHealth / 10;
-        totalHealthBar.fillAmount = (float)playerCombat.playerHealth / 10;
+        healthBackground.fillAmount = shownHp / 10;
+        totalHealthBar.fillAmount = shownHp / 10;
     }
     void DisableButtons()
     {
-        if(shownHp <= playerCombat.playerHealth)
+        if(shownHp <= playerCombat.totalLifes)
         {
             hpDown.interactable = false;
         }
@@ -106,7 +108,7 @@ public class UICode : MonoBehaviour
             hpUp.interactable = true;
         }
 
-        if (shownAtk <= playerCombat.attackDamage)
+        if (shownAtk <= playerCombat.currentDamage)
         {
             atkDown.interactable = false;
         }
@@ -125,7 +127,7 @@ public class UICode : MonoBehaviour
         }
 
 
-        if (shownDef <= playerCombat.playerDefense)
+        if (shownDef <= playerCombat.currentDef)
         {
             defDown.interactable = false;
         }
@@ -179,19 +181,19 @@ public class UICode : MonoBehaviour
     }
     public void Purchase()
     {
-        if(shownHp > playerCombat.playerHealth)
+        if(shownHp > playerCombat.totalLifes)
         {
-            playerCombat.playerHealth = shownHp;
-            playerCombat.currentHealth = shownHp;
+            playerCombat.totalLifes = shownHp;
+            playerCombat.totalLifes= shownHp;
             UpdateHealthBars();
         }
            
-        if(shownDef>playerCombat.playerDefense)
-            playerCombat.playerDefense = shownDef;
-        if(shownAtk > playerCombat.attackDamage)
-            playerCombat.attackDamage = shownAtk;
+        if(shownDef> playerCombat.currentDef)
+           playerCombat.currentDef = shownDef;
+        if(shownAtk > playerCombat.currentDamage)
+            playerCombat.currentDamage = shownAtk;
 
-        characterController2D.moneyNum -= shownPrice;
+        characterController2D.currentCoins -= shownPrice;
     }
     public void ClosePanel()
     {

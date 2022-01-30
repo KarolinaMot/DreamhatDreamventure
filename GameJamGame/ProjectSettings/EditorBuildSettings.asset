@@ -6,30 +6,33 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SCENES/MainHub.unity
+    path: Assets/SCENES/StartMenu.unity
+    guid: 2d5f9af2bb0411440bfc66ea5ff8bfc1
+  - enabled: 1
+    path: Assets/SCENES/HUBS/MainHub.unity
     guid: 8ffa1e9559837c14c81ea8e35b8fcb4a
   - enabled: 1
     path: Assets/SCENES/NEW2/KindergartenV1.unity
-    guid: 28ab06ef3365dec40baf934a5a0b61bc
+    guid: b55ab900039293d48935a4c0eb09680c
   - enabled: 1
     path: Assets/SCENES/NEW2/KindergartenV2.unity
-    guid: 97cec71281737284cbebb49a103a63f3
+    guid: 10d7a013c34515f4dba0e88ba266f315
   - enabled: 1
-    path: Assets/SCENES/NEW2/Basement.unity
-    guid: ec0af8d74c125f345ad6e150158554f8
-  - enabled: 1
-    path: Assets/SCENES/NEW2/BasementV2.unity
-    guid: 1fe177c8d75c97f40b57fa44b0b95d9e
-  - enabled: 1
-    path: Assets/SCENES/NEW2/BasementV3.unity
-    guid: 74353b19101483d4489e180165b774cf
-  - enabled: 1
-    path: Assets/SCENES/Garden.unity
-    guid: 5497b3501a28f924185c1b57d0b8822d
-  - enabled: 1
-    path: Assets/SCENES/Hub1.unity
+    path: Assets/SCENES/HUBS/Hub1.unity
     guid: 044d61ebccae47c4586b6bcbc34066e9
   - enabled: 1
-    path: Assets/SCENES/Hub2.unity
+    path: Assets/SCENES/NEW2/Basement.unity
+    guid: 2730434694c1a494bb099a742deeb302
+  - enabled: 1
+    path: Assets/SCENES/NEW2/BasementV2.unity
+    guid: 8262dcac3abfa9a4e997807fa559041c
+  - enabled: 1
+    path: Assets/SCENES/NEW2/BasementV3.unity
+    guid: 12211e2034d5b8c4eacc0ca1c1621b3e
+  - enabled: 1
+    path: Assets/SCENES/HUBS/Hub2.unity
     guid: cea1ff8b3ce65bb45a0cdbbd6e4681f5
+  - enabled: 1
+    path: Assets/SCENES/NEW2/Garden.unity
+    guid: 5497b3501a28f924185c1b57d0b8822d
   m_configObjects: {}

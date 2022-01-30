@@ -32,11 +32,13 @@ public class CharacterController2D : MonoBehaviour
     public float knockbackCount;
     public bool knockFromRight;
 
-    public int moneyNum = 0;
-    public float xpNum = 0;
+
     private float maxXp = 1;
     public LayerMask coins;
     public LayerMask xp;
+    public float currentXp;
+    public int currentCoins;
+    public int currentAtk;
 
     public float camHeight;
     public int tick;
@@ -44,8 +46,11 @@ public class CharacterController2D : MonoBehaviour
     int sk = 0;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
+        currentXp = PlayerPrefs.GetFloat("PlayerCurrentXP");
+        currentCoins = PlayerPrefs.GetInt("PlayerCurrentMoney");
+
         t = transform;
         r2d = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<CapsuleCollider2D>();
@@ -77,7 +82,7 @@ public class CharacterController2D : MonoBehaviour
             mainCamera.transform.position = new Vector3(t.position.x, t.position.y+camHeight, cameraPos.z);
         }
 
-        if(xpNum >= maxXp && Input.GetKeyDown(KeyCode.Q))
+        if(currentXp >= maxXp && Input.GetKeyDown(KeyCode.Q))
         {
             berserker = true;
         }
@@ -124,19 +129,19 @@ public class CharacterController2D : MonoBehaviour
         {
             if (sk == 0)
             {
-                combat.attackDamage += 2;
+                currentAtk+=2;
                 combat.slash = combat.bigSlash;
                 combat.slashAnimator = combat.bigSlashAnimator;
                 combat.attackRange += 2;
                 sk++;
             }
-            
-            xpNum -= 0.0008f;
+
+            currentXp -= 0.0008f;
         }
-        if (xpNum <= 0)
+        if (currentXp <= 0 && berserker)
         {
             berserker = false;
-            combat.attackDamage -= 2;
+            currentAtk -= 2; ;
             combat.slash = combat.smallSlash;
             combat.slashAnimator = combat.smallSlashAnimator;
             combat.attackRange -= 2;
@@ -197,7 +202,7 @@ public class CharacterController2D : MonoBehaviour
         foreach (Collider2D coin in allCoins)
         {
             Destroy(coin.gameObject);
-            moneyNum++;
+            currentCoins++;
         }
     }
 
@@ -208,9 +213,9 @@ public class CharacterController2D : MonoBehaviour
         foreach (Collider2D particle in allXp)
         {
             Destroy(particle.gameObject);
-            xpNum+=0.1f;
-            if (xpNum > maxXp)
-                xpNum = maxXp;
+            currentXp+=0.1f;
+            if (currentXp > maxXp)
+                currentXp = maxXp;
         }
     }
 

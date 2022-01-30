@@ -24,17 +24,21 @@ public class PlayerCombat : MonoBehaviour
     public bool canTakeDamage = true;
     public float attackRange = 0.5f;
 
-    public int attackDamage = 1;
-    public int playerHealth = 3;
-    public float playerDefense = 0;
-    public int currentHealth = 3;
+    public int totalLifes;
+    public int currentDamage;
+    public float currentLifes;
+    public float currentDef;
     public int timer = 0;
 
 
-    private void Awake()
+    private void Start()
     {
+        totalLifes = PlayerPrefs.GetInt("PlayerCurrentAtk");
+        currentDamage = PlayerPrefs.GetInt("PlayerCurrentAtk");
+        currentLifes = PlayerPrefs.GetFloat("PlayerCurrentLifes");
+        currentDef = PlayerPrefs.GetFloat("PlayerCurrentLifes");
+
         slash.SetActive(false);
-        currentHealth = playerHealth;
         slashAnimator = smallSlashAnimator;
     }
     void Update()
@@ -63,11 +67,11 @@ public class PlayerCombat : MonoBehaviour
         {
             if(enemy.gameObject.name== "BOSS")
             {
-                enemy.GetComponent<bossCode>().TakeDamage(attackDamage);
+                enemy.GetComponent<bossCode>().TakeDamage(currentDamage);
             }
             else
             {
-                enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+                enemy.GetComponent<Enemy>().TakeDamage(currentDamage);
             }
             
         }
@@ -88,12 +92,12 @@ public class PlayerCombat : MonoBehaviour
                 else
                     controller.knockFromRight = false;
 
-                currentHealth--;
+                currentLifes--;
                 canTakeDamage = false;
             }
         }
 
-        if(currentHealth <= 0)
+        if(currentLifes <= 0)
         {
             Death();
         }

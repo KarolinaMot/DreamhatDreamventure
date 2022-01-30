@@ -6,12 +6,7 @@ using UnityEngine.SceneManagement;
 public class PortalToHub : MonoBehaviour
 {
     public GameObject textOpen;
-    public Animator badAnimator;
-    public Animator badHandAnimator;
-    public Sprite good;
-    public Sprite goodHands;
-    public SpriteRenderer render;
-    public SpriteRenderer handRender;
+    public SceneChange sceneChange;
     bool textShown = false;
     public int hub;
 
@@ -21,17 +16,11 @@ public class PortalToHub : MonoBehaviour
         if (textShown && Input.GetKey(KeyCode.T))
         {
             textOpen.SetActive(false);
-            badAnimator.SetTrigger("isTransforming");
-            badHandAnimator.SetTrigger("isTransforming");
-        }
-
-        if (badAnimator.GetCurrentAnimatorStateInfo(0).IsName("Empty3") && badAnimator.GetCurrentAnimatorStateInfo(0).IsName("Empty3"))
-        {
-            render.sprite = good;
-            handRender.sprite = goodHands;
-
+            sceneChange.OnSceneChange();
             SceneManager.LoadScene(hub);
-        }
+        }      
+        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
