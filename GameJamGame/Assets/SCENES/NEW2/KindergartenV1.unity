@@ -2403,6 +2403,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8408648683739267018, guid: d8070403f66e5f44da22566440726773, type: 3}
   m_PrefabInstance: {fileID: 211447690}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &211447692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1269432275, guid: d8070403f66e5f44da22566440726773, type: 3}
+  m_PrefabInstance: {fileID: 211447690}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &229360536
 GameObject:
   m_ObjectHideFlags: 0
@@ -26945,6 +26950,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1056566094, guid: 4c902d5339fe31048a1919ce350aae80, type: 3}
+      propertyPath: deathScreen
+      value: 
+      objectReference: {fileID: 211447692}
     - target: {fileID: 3456131864871293780, guid: 4c902d5339fe31048a1919ce350aae80, type: 3}
       propertyPath: m_RootOrder
       value: 47

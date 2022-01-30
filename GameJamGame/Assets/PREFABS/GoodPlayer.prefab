@@ -426,6 +426,7 @@ MonoBehaviour:
   anim: {fileID: 9135991380983096038}
   handAnim: {fileID: 5854444628518265548}
   combat: {fileID: 5854444629219677053}
+  deathScreen: {fileID: 0}
   maxSpeed: 3.4
   jumpHeight: 8
   gravityScale: 1.5
@@ -437,14 +438,15 @@ MonoBehaviour:
   knockbackLength: 0.2
   knockbackCount: 0
   knockFromRight: 0
-  moneyNum: 3000
-  xpNum: 0
   coins:
     serializedVersion: 2
     m_Bits: 1024
   xp:
     serializedVersion: 2
     m_Bits: 2048
+  currentXp: 0
+  currentCoins: 0
+  currentAtk: 0
   camHeight: 3.3
   tick: 0
   berserker: 0
@@ -469,7 +471,7 @@ MonoBehaviour:
   bigSlashAnimator: {fileID: 5854444629653471635}
   attackPoint: {fileID: 5854444629653471660}
   smallSlash: {fileID: 5854444629653471661}
-  bigSlash: {fileID: 0}
+  bigSlash: {fileID: 5854444629653471661}
   slash: {fileID: 5854444629653471661}
   poof: {fileID: 4800026081118939667, guid: eb49338eebffc7e47aa49385ce5e610d, type: 3}
   enemies:
@@ -477,8 +479,8 @@ MonoBehaviour:
     m_Bits: 512
   canTakeDamage: 1
   attackRange: 0.35
-  attackDamage: 1
-  playerHealth: 3
-  playerDefense: 0
-  currentHealth: 3
+  totalLifes: 0
+  currentDamage: 0
+  currentLifes: 0
+  currentDef: 0
   timer: 0

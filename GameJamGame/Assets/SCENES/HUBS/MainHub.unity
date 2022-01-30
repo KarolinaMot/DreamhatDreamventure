@@ -1760,11 +1760,6 @@ Transform:
   m_Father: {fileID: 683465421}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &210138682 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5854444629653471661, guid: 364831303e24aa8458542baf7ffef2bb, type: 3}
-  m_PrefabInstance: {fileID: 611104356}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &211150137
 GameObject:
   m_ObjectHideFlags: 0
@@ -4141,29 +4136,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5854444629219677053, guid: 364831303e24aa8458542baf7ffef2bb, type: 3}
-      propertyPath: bigSlash
+      propertyPath: deathScreen
       value: 
-      objectReference: {fileID: 210138682}
-    - target: {fileID: 9135991380983096032, guid: 364831303e24aa8458542baf7ffef2bb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9135991380983096032, guid: 364831303e24aa8458542baf7ffef2bb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9135991380983096032, guid: 364831303e24aa8458542baf7ffef2bb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9135991380983096032, guid: 364831303e24aa8458542baf7ffef2bb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9135991380983096032, guid: 364831303e24aa8458542baf7ffef2bb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1269432275}
     - target: {fileID: 9135991381840571239, guid: 364831303e24aa8458542baf7ffef2bb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4209,21 +4184,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9135991381840571240, guid: 364831303e24aa8458542baf7ffef2bb, type: 3}
-      propertyPath: camHeight
-      value: 3.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9135991381840571240, guid: 364831303e24aa8458542baf7ffef2bb, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 783991852}
-    - target: {fileID: 9135991381840571241, guid: 364831303e24aa8458542baf7ffef2bb, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 9135991381840571241, guid: 364831303e24aa8458542baf7ffef2bb, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.04
-      objectReference: {fileID: 0}
+    - target: {fileID: 9135991381840571240, guid: 364831303e24aa8458542baf7ffef2bb, type: 3}
+      propertyPath: deathScreen
+      value: 
+      objectReference: {fileID: 1269432275}
     - target: {fileID: 9135991381840571243, guid: 364831303e24aa8458542baf7ffef2bb, type: 3}
       propertyPath: m_Name
       value: GoodPlayer
@@ -7933,6 +7900,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1269432275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1269432275, guid: d8070403f66e5f44da22566440726773, type: 3}
+  m_PrefabInstance: {fileID: 176963842}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1297665093
 GameObject:
   m_ObjectHideFlags: 0

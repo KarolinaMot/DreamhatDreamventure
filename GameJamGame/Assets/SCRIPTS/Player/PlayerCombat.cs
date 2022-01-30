@@ -13,6 +13,7 @@ public class PlayerCombat : MonoBehaviour
     public Animator slashAnimator;
     public Animator smallSlashAnimator;
     public Animator bigSlashAnimator;
+    public GameObject deathScreen;
 
     public Transform attackPoint;
     public GameObject smallSlash;
@@ -107,6 +108,9 @@ public class PlayerCombat : MonoBehaviour
     {
         Instantiate(poof, transform.position, Quaternion.identity);
         Destroy(gameObject);
+        Time.timeScale = 0;
+        deathScreen.SetActive(true);
+       
     }
 
     private void OnDrawGizmosSelected()

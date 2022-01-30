@@ -9,6 +9,7 @@ public class CharacterController2D : MonoBehaviour
     public Animator anim;
     public Animator handAnim;
     public PlayerCombat combat;
+    public GameObject deathScreen;
     // Move player in 2D space
     public float maxSpeed = 3.4f;
     public float jumpHeight = 6.5f;
