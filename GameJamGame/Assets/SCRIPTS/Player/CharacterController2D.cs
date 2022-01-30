@@ -9,7 +9,7 @@ public class CharacterController2D : MonoBehaviour
     public Animator anim;
     public Animator handAnim;
     public PlayerCombat combat;
-    public GameObject deathScreen;
+    
     // Move player in 2D space
     public float maxSpeed = 3.4f;
     public float jumpHeight = 6.5f;
@@ -40,12 +40,15 @@ public class CharacterController2D : MonoBehaviour
     public float currentXp;
     public int currentCoins;
     public int currentAtk;
+    public AudioSource money;
+    public AudioSource laugh;
 
     public float camHeight;
     public int tick;
     public bool berserker = false;
     int sk = 0;
 
+    public AudioSource walkingSound;
     // Use this for initialization
     void Awake()
     {
@@ -86,6 +89,8 @@ public class CharacterController2D : MonoBehaviour
         if(currentXp >= maxXp && Input.GetKeyDown(KeyCode.Q))
         {
             berserker = true;
+            laugh.Play();
+
         }
         
     }
@@ -110,6 +115,10 @@ public class CharacterController2D : MonoBehaviour
                     break;
                 }
             }
+        }
+        if (!isGrounded)
+        {
+            walkingSound.Stop();
         }
 
         // Apply movement velocity
@@ -156,6 +165,7 @@ public class CharacterController2D : MonoBehaviour
         {
             r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
             doubleJump++;
+            walkingSound.Stop();
         }
     }
 
@@ -186,12 +196,15 @@ public class CharacterController2D : MonoBehaviour
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && (isGrounded || Mathf.Abs(r2d.velocity.x) > 0.01f))
         {
             moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
+            if(!walkingSound.isPlaying && isGrounded)
+                walkingSound.Play();
         }
         else
         {
             if (isGrounded || r2d.velocity.magnitude < 0.01f)
             {
                 moveDirection = 0;
+                walkingSound.Stop();
             }
         }
     }
@@ -204,6 +217,7 @@ public class CharacterController2D : MonoBehaviour
         {
             Destroy(coin.gameObject);
             currentCoins++;
+            money.Play();
         }
     }
 

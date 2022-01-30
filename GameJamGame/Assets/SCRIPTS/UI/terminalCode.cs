@@ -6,6 +6,7 @@ public class terminalCode : MonoBehaviour
 {
     public GameObject textOpen;
     public GameObject terminal;
+    public AudioSource computerSound;
     bool textShown = false;
 
     // Start is called before the first frame update
@@ -13,6 +14,7 @@ public class terminalCode : MonoBehaviour
     {
         if(textShown && Input.GetKey(KeyCode.T))
         {
+            computerSound.Play();
             terminal.SetActive(true);
             textOpen.SetActive(false);
         }

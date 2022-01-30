@@ -8,6 +8,8 @@ using TMPro;
 public class UICode : MonoBehaviour
 {
     public PlayerCombat playerCombat;
+    public AudioSource menuButton;
+    public AudioSource moneyButton;
     public CharacterController2D characterController2D;
     [SerializeField] private GameObject upgradePanel;
     [SerializeField] private Image healthBackground;
@@ -160,39 +162,48 @@ public class UICode : MonoBehaviour
     {
         shownHp++;
         shownHpPrice += hpPricenum;
+        menuButton.Play();
     }
     public void AtkPressUp()
     {
         shownAtk++;
         shownAtkPrice += atkPricenum;
+        menuButton.Play();
     }
     public void DefPressUp()
     {
         shownDef+=0.1f;
         shownDefPrice += defPricenum;
+        menuButton.Play();
     }
     public void HealthPressDown()
     {
         shownHp--;
         shownHpPrice -= defPricenum;
+        menuButton.Play();
     }
     public void AtkPressDown()
     {
         shownAtk--;
         shownAtkPrice -= atkPricenum;
+        menuButton.Play();
     }
     public void DefPressDown()
     {
+        menuButton.Play();
         if (shownDef == 0.1f)
             shownDef = 0;
         else
             shownDef-=0.1f;
 
         shownDefPrice -= defPricenum;
+
     }
     public void Purchase()
     {
-        if(shownHp > playerCombat.totalLifes)
+        menuButton.Play();
+        moneyButton.Play();
+        if (shownHp > playerCombat.totalLifes)
         {
             playerCombat.totalLifes = shownHp;
             playerCombat.totalLifes= shownHp;
@@ -209,5 +220,6 @@ public class UICode : MonoBehaviour
     public void ClosePanel()
     {
         upgradePanel.SetActive(false);
+        menuButton.Play();
     }
 }

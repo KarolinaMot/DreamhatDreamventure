@@ -14,6 +14,7 @@ public class PlayerCombat : MonoBehaviour
     public Animator smallSlashAnimator;
     public Animator bigSlashAnimator;
     public GameObject deathScreen;
+    public AudioSource attack;
 
     public Transform attackPoint;
     public GameObject smallSlash;
@@ -49,6 +50,7 @@ public class PlayerCombat : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Attack();
+                attack.Play();
             }
         }
         
@@ -61,6 +63,7 @@ public class PlayerCombat : MonoBehaviour
     {
         animator.SetTrigger("isAttacking");
         handAnimator.SetTrigger("isAttacking");
+
         slash.SetActive(true);
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemies);
 
@@ -75,6 +78,31 @@ public class PlayerCombat : MonoBehaviour
                 enemy.GetComponent<Enemy>().TakeDamage(currentDamage);
             }
             
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name== "bosscrushingarm")
+        {
+            if (canTakeDamage)
+            {
+                Debug.Log("damage taken");
+                controller.knockbackCount = controller.knockbackLength;
+
+                if (collision.transform.position.x > transform.position.x)
+                    controller.knockFromRight = true;
+                else
+                    controller.knockFromRight = false;
+
+                currentLifes--;
+                canTakeDamage = false;
+            }
+
+            if (currentLifes <= 0)
+            {
+                Death();
+            }
         }
     }
     void TakeDamage()

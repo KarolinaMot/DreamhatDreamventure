@@ -423,7 +423,6 @@ MonoBehaviour:
   anim: {fileID: 3456131865728768725}
   handAnim: {fileID: 1730845439}
   combat: {fileID: 1056566094}
-  deathScreen: {fileID: 0}
   maxSpeed: 3.4
   jumpHeight: 8
   gravityScale: 1.5
@@ -444,9 +443,11 @@ MonoBehaviour:
   currentXp: 0
   currentCoins: 0
   currentAtk: 0
+  money: {fileID: 0}
   camHeight: 0
   tick: 0
   berserker: 0
+  walkingSound: {fileID: 0}
 --- !u!114 &1056566094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,6 +468,7 @@ MonoBehaviour:
   smallSlashAnimator: {fileID: 614250912}
   bigSlashAnimator: {fileID: 296757352}
   deathScreen: {fileID: 0}
+  attack: {fileID: 0}
   attackPoint: {fileID: 254886771}
   smallSlash: {fileID: 614250910}
   bigSlash: {fileID: 296757351}

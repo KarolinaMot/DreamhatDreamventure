@@ -13,6 +13,7 @@ public class pillowCode : MonoBehaviour
     public SpriteRenderer render;
     public SpriteRenderer handRender;
     public SceneChange sceneChange;
+    public AudioSource laugh;
     bool textShown = false;
     int random;
 
@@ -23,7 +24,8 @@ public class pillowCode : MonoBehaviour
         {
             textOpen.SetActive(false);
             goodAnimator.SetTrigger("isTransforming");
-            goodhandAnimator.SetTrigger("isTransforming");  
+            goodhandAnimator.SetTrigger("isTransforming");
+            laugh.Play();
         }
 
         if (goodAnimator.GetCurrentAnimatorStateInfo(0).IsName("Empty3") && goodAnimator.GetCurrentAnimatorStateInfo(0).IsName("Empty3"))
