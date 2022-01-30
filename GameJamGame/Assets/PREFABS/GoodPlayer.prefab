@@ -259,8 +259,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9135991380983096041}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5854444628518265549}
@@ -408,7 +408,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.12, y: -0.04}
+  m_Offset: {x: 0.15, y: -0.04}
   m_Size: {x: 0.55, y: 1.02}
   m_Direction: 0
 --- !u!114 &9135991381840571240
@@ -425,6 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 9135991380983096038}
   handAnim: {fileID: 5854444628518265548}
+  combat: {fileID: 5854444629219677053}
   maxSpeed: 3.4
   jumpHeight: 8
   gravityScale: 1.5
@@ -444,6 +445,9 @@ MonoBehaviour:
   xp:
     serializedVersion: 2
     m_Bits: 2048
+  camHeight: 3.3
+  tick: 0
+  berserker: 0
 --- !u!114 &5854444629219677053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,7 +465,11 @@ MonoBehaviour:
   animator: {fileID: 9135991380983096038}
   handAnimator: {fileID: 5854444628518265548}
   slashAnimator: {fileID: 5854444629653471635}
-  attackPoint: {fileID: 5854444629996190528}
+  smallSlashAnimator: {fileID: 5854444629653471635}
+  bigSlashAnimator: {fileID: 5854444629653471635}
+  attackPoint: {fileID: 5854444629653471660}
+  smallSlash: {fileID: 5854444629653471661}
+  bigSlash: {fileID: 0}
   slash: {fileID: 5854444629653471661}
   poof: {fileID: 4800026081118939667, guid: eb49338eebffc7e47aa49385ce5e610d, type: 3}
   enemies:

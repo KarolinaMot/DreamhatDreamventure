@@ -6,7 +6,6 @@ public class terminalCode : MonoBehaviour
 {
     public GameObject textOpen;
     public GameObject terminal;
-    bool terminalOpen = false;
     bool textShown = false;
 
     // Start is called before the first frame update
@@ -27,14 +26,5 @@ public class terminalCode : MonoBehaviour
             textShown = true;
         }
         Debug.Log(collision.gameObject.name);
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "GoodPlayer" || collision.gameObject.name == "BadPlayer")
-        {
-            textOpen.SetActive(false);
-            textShown = false;
-        }
     }
 }

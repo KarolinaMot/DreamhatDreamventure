@@ -8,6 +8,7 @@ public class CharacterController2D : MonoBehaviour
 {
     public Animator anim;
     public Animator handAnim;
+    public PlayerCombat combat;
     // Move player in 2D space
     public float maxSpeed = 3.4f;
     public float jumpHeight = 6.5f;
@@ -38,6 +39,9 @@ public class CharacterController2D : MonoBehaviour
     public LayerMask xp;
 
     public float camHeight;
+    public int tick;
+    public bool berserker = false;
+    int sk = 0;
 
     // Use this for initialization
     void Start()
@@ -65,12 +69,17 @@ public class CharacterController2D : MonoBehaviour
         MovementControls();
         FlipPlayer();
         Jumping();
-        
+        Berserk();
 
         // Camera follow
         if (mainCamera)
         {
             mainCamera.transform.position = new Vector3(t.position.x, t.position.y+camHeight, cameraPos.z);
+        }
+
+        if(xpNum >= maxXp && Input.GetKeyDown(KeyCode.Q))
+        {
+            berserker = true;
         }
         
     }
@@ -109,6 +118,31 @@ public class CharacterController2D : MonoBehaviour
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(colliderRadius, 0, 0), isGrounded ? Color.green : Color.red);
     }
 
+    void Berserk()
+    {
+        if (berserker)
+        {
+            if (sk == 0)
+            {
+                combat.attackDamage += 2;
+                combat.slash = combat.bigSlash;
+                combat.slashAnimator = combat.bigSlashAnimator;
+                combat.attackRange += 2;
+                sk++;
+            }
+            
+            xpNum -= 0.0008f;
+        }
+        if (xpNum <= 0)
+        {
+            berserker = false;
+            combat.attackDamage -= 2;
+            combat.slash = combat.smallSlash;
+            combat.slashAnimator = combat.smallSlashAnimator;
+            combat.attackRange -= 2;
+            sk = 0;
+        }
+    }
     void Jumping()
     {
         // Jumping

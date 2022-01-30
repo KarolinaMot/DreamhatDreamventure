@@ -5,22 +5,31 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/SCENES/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/SCENES/MainHub.unity
     guid: 8ffa1e9559837c14c81ea8e35b8fcb4a
   - enabled: 1
-    path: Assets/SCENES/NEW/KindergartenV1.unity
-    guid: a28f40d58e81308438c1b988fd49b9fe
+    path: Assets/SCENES/NEW2/KindergartenV1.unity
+    guid: 28ab06ef3365dec40baf934a5a0b61bc
   - enabled: 1
-    path: Assets/SCENES/NEW/KindergartenV2.unity
-    guid: 7b8dbc796b9b790478214b4e4a298d1c
+    path: Assets/SCENES/NEW2/KindergartenV2.unity
+    guid: 97cec71281737284cbebb49a103a63f3
   - enabled: 1
-    path: Assets/SCENES/NEW/KindergartenV3.unity
-    guid: 9ae01a86ddd6fce41a6abd9a46ba3869
+    path: Assets/SCENES/NEW2/Basement.unity
+    guid: ec0af8d74c125f345ad6e150158554f8
   - enabled: 1
-    path: Assets/SCENES/NEW/Basement.unity
-    guid: d5e1a5008481c634798cd5323bb18e1e
+    path: Assets/SCENES/NEW2/BasementV2.unity
+    guid: 1fe177c8d75c97f40b57fa44b0b95d9e
+  - enabled: 1
+    path: Assets/SCENES/NEW2/BasementV3.unity
+    guid: 74353b19101483d4489e180165b774cf
+  - enabled: 1
+    path: Assets/SCENES/Garden.unity
+    guid: 5497b3501a28f924185c1b57d0b8822d
+  - enabled: 1
+    path: Assets/SCENES/Hub1.unity
+    guid: 044d61ebccae47c4586b6bcbc34066e9
+  - enabled: 1
+    path: Assets/SCENES/Hub2.unity
+    guid: cea1ff8b3ce65bb45a0cdbbd6e4681f5
   m_configObjects: {}

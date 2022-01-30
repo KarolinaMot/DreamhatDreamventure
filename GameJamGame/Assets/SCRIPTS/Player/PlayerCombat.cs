@@ -11,8 +11,12 @@ public class PlayerCombat : MonoBehaviour
     public Animator animator;
     public Animator handAnimator;
     public Animator slashAnimator;
+    public Animator smallSlashAnimator;
+    public Animator bigSlashAnimator;
 
     public Transform attackPoint;
+    public GameObject smallSlash;
+    public GameObject bigSlash;
     public GameObject slash;
     public GameObject poof;
     public LayerMask enemies;
@@ -31,6 +35,7 @@ public class PlayerCombat : MonoBehaviour
     {
         slash.SetActive(false);
         currentHealth = playerHealth;
+        slashAnimator = smallSlashAnimator;
     }
     void Update()
     {
@@ -56,12 +61,20 @@ public class PlayerCombat : MonoBehaviour
 
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            if(enemy.gameObject.name== "BOSS")
+            {
+                enemy.GetComponent<bossCode>().TakeDamage(attackDamage);
+            }
+            else
+            {
+                enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            }
+            
         }
     }
     void TakeDamage()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 0.4f, enemies);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 0.2f, enemies);
 
         foreach (Collider2D enemy in hitEnemies)
         {
