@@ -5,7 +5,6 @@ using UnityEngine;
 public class SceneChange : MonoBehaviour
 {
     public PlayerCombat playerCombat;
-    public CharacterController2D characterController;
 
     int playerTotalLifes;
     float playerCurrentLifes;
@@ -14,26 +13,14 @@ public class SceneChange : MonoBehaviour
     int playerCurrentMoney;
     float playerCurrentXP;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnSceneChange()
     {
         playerTotalLifes = playerCombat.totalLifes;
         playerCurrentLifes = playerCombat.currentLifes;
-        playerCurrentAtk = playerCombat.currentDamage;
+        playerCurrentAtk = playerCombat.currentAtk;
         playerCurrentDef = playerCombat.currentDef;
-        playerCurrentXP = characterController.currentXp;
-        playerCurrentMoney = characterController.currentCoins;
+        playerCurrentXP = playerCombat.currentXp;
+        playerCurrentMoney = playerCombat.currentCoins;
 
         PlayerPrefs.SetInt("PlayerTotalLifes", playerTotalLifes);
         PlayerPrefs.SetFloat("PlayerCurrentLifes", playerCurrentLifes);

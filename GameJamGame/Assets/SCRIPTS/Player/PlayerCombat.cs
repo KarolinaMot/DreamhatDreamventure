@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -8,38 +9,71 @@ public class PlayerCombat : MonoBehaviour
 
     public CharacterController2D controller;
     // Update is called once per frame
-    public Animator animator;
-    public Animator handAnimator;
-    public Animator slashAnimator;
-    public Animator smallSlashAnimator;
-    public Animator bigSlashAnimator;
-    public GameObject deathScreen;
-    public AudioSource attack;
 
-    public Transform attackPoint;
-    public GameObject smallSlash;
-    public GameObject bigSlash;
-    public GameObject slash;
-    public GameObject poof;
-    public LayerMask enemies;
+    [Header("Animators")]
+    [SerializeField] Animator animator;
+    [SerializeField] Animator handAnimator;
+    [SerializeField] Animator smallSlashAnimator;
+    [SerializeField] Animator bigSlashAnimator;
 
-    public bool canTakeDamage = true;
-    public float attackRange = 0.5f;
-
+    [Header("Stats")]
+    [SerializeField] float attackRange = 0.5f;
     public int totalLifes;
-    public int currentDamage;
     public float currentLifes;
     public float currentDef;
-    public int timer = 0;
+    public float currentXp;
+    public int currentCoins;
+    public int currentAtk;
+
+    [Header("Attack")]
+    [SerializeField] Transform attackPoint;
+    [SerializeField] GameObject smallSlash;
+    [SerializeField] GameObject bigSlash;
+
+    [Header("UI")]
+    [SerializeField] GameObject deathScreen;
+
+    [Header("Taking Damage")]
+    [SerializeField] bool canTakeDamage = true;
+    [SerializeField] GameObject poof;
+
+    [Header("Layer masks")]
+    [SerializeField] LayerMask coins;
+    [SerializeField] LayerMask xp;
+    [SerializeField] LayerMask enemies;
+
+    [Header("Audio")]
+    [SerializeField] AudioSource attack;
+    [SerializeField] AudioSource laugh;
+    [SerializeField] AudioSource money;
+
+    bool berserker = false;
+    private int timer = 0;
+    private float maxXp = 1;
+    int sk = 0;
+    Animator slashAnimator;
+    GameObject slash;
 
 
-    private void Start()
+    private void Awake()
     {
-        totalLifes = PlayerPrefs.GetInt("PlayerCurrentAtk");
-        currentDamage = PlayerPrefs.GetInt("PlayerCurrentAtk");
-        currentLifes = PlayerPrefs.GetFloat("PlayerCurrentLifes");
-        currentDef = PlayerPrefs.GetFloat("PlayerCurrentLifes");
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            currentXp = PlayerPrefs.GetFloat("PlayerCurrentXP");
+        }
+        currentCoins = PlayerPrefs.GetInt("PlayerCurrentMoney");
 
+        Time.timeScale = 1;
+        if(SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            totalLifes = PlayerPrefs.GetInt("PlayerCurrentAtk");
+            currentAtk = PlayerPrefs.GetInt("PlayerCurrentAtk");
+            currentLifes = PlayerPrefs.GetFloat("PlayerCurrentLifes");
+            currentDef = PlayerPrefs.GetFloat("PlayerCurrentLifes");
+        }
+
+        slash = smallSlash;
+        slashAnimator = smallSlashAnimator;
         slash.SetActive(false);
         slashAnimator = smallSlashAnimator;
     }
@@ -53,11 +87,22 @@ public class PlayerCombat : MonoBehaviour
                 attack.Play();
             }
         }
-        
+
+        TakeMoney();
+        TakeXp();
         TakeDamage();
         Tick();
         if(slash.activeSelf)
             CheckAnimationEnd();
+
+
+        if (currentXp >= maxXp && Input.GetKeyDown(KeyCode.Q))
+        {
+            berserker = true;
+            laugh.Play();
+        }
+
+        Berserk();
     }
     void Attack()
     {
@@ -71,13 +116,64 @@ public class PlayerCombat : MonoBehaviour
         {
             if(enemy.gameObject.name== "BOSS")
             {
-                enemy.GetComponent<bossCode>().TakeDamage(currentDamage);
+                enemy.GetComponent<bossCode>().TakeDamage(currentAtk);
             }
             else
             {
-                enemy.GetComponent<Enemy>().TakeDamage(currentDamage);
+                enemy.GetComponent<Enemy>().TakeDamage(currentAtk);
             }
             
+        }
+    }
+
+    void TakeMoney()
+    {
+        Collider2D[] allCoins = Physics2D.OverlapCircleAll(transform.position, 0.2f, coins);
+
+        foreach (Collider2D coin in allCoins)
+        {
+            Destroy(coin.gameObject);
+            currentCoins++;
+            money.Play();
+        }
+    }
+
+    void TakeXp()
+    {
+        Collider2D[] allXp = Physics2D.OverlapCircleAll(transform.position, 0.2f, xp);
+
+        foreach (Collider2D particle in allXp)
+        {
+            Destroy(particle.gameObject);
+            currentXp += 0.1f;
+            if (currentXp > maxXp)
+                currentXp = maxXp;
+        }
+    }
+
+    void Berserk()
+    {
+        if (berserker)
+        {
+            if (sk == 0)
+            {
+                currentAtk += 2;
+                slash = bigSlash;
+                slashAnimator = bigSlashAnimator;
+                attackRange += 2;
+                sk++;
+            }
+
+            currentXp -= 0.0008f;
+        }
+        if (currentXp <= 0 && berserker)
+        {
+            berserker = false;
+            currentAtk -= 2; ;
+            slash = smallSlash;
+            slashAnimator = smallSlashAnimator;
+            attackRange -= 2;
+            sk = 0;
         }
     }
 

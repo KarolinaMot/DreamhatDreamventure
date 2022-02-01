@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class pillowCode : MonoBehaviour
 {
+    public CharacterController2D characterController;
+    public PlayerCombat playerCombat;
     public GameObject textOpen;
     public Animator goodAnimator;
     public Animator goodhandAnimator;
@@ -17,6 +19,11 @@ public class pillowCode : MonoBehaviour
     bool textShown = false;
     int random;
 
+    private void Awake()
+    {
+        playerCombat.currentXp = 0;
+        playerCombat.currentLifes = playerCombat.totalLifes;
+    }
     // Start is called before the first frame update
     void Update()
     {

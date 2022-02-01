@@ -336,6 +336,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2739580852413742526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2059784295237100870}
+  m_Layer: 3
+  m_Name: CheckForWall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2059784295237100870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739580852413742526}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.21, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3456131864871293780}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3456131864871293784
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,8 +377,8 @@ GameObject:
   - component: {fileID: 3456131864871293780}
   - component: {fileID: 3456131864871293781}
   - component: {fileID: 3456131864871293786}
-  - component: {fileID: 3456131864871293787}
-  - component: {fileID: 1056566094}
+  - component: {fileID: 8787378143022190807}
+  - component: {fileID: 5888918693958991060}
   m_Layer: 3
   m_Name: BadPlayer
   m_TagString: Untagged
@@ -365,9 +395,10 @@ Transform:
   m_GameObject: {fileID: 3456131864871293784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1.2, y: 1.2, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 3456131865728768723}
+  - {fileID: 2059784295237100870}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -386,12 +417,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &3456131864871293786
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -408,7 +439,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.12, y: -0.04}
   m_Size: {x: 0.55, y: 1.02}
   m_Direction: 0
---- !u!114 &3456131864871293787
+--- !u!114 &8787378143022190807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -422,33 +453,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 3456131865728768725}
   handAnim: {fileID: 1730845439}
-  combat: {fileID: 1056566094}
+  combat: {fileID: 5888918693958991060}
   maxSpeed: 3.4
-  jumpHeight: 8
-  gravityScale: 1.5
-  mainCamera: {fileID: 0}
+  jumpHeight: 10
+  gravityScale: 1
+  knockBack: 8
+  knockbackLength: 2
+  knockbackCount: 0
+  knockFromRight: 0
+  camHeight: 3.02
   isGrounded: 0
   isJumping: 0
   isMoving: 0
-  knockBack: 8
-  knockbackLength: 0.2
-  knockbackCount: 0
-  knockFromRight: 0
-  coins:
-    serializedVersion: 2
-    m_Bits: 1024
-  xp:
-    serializedVersion: 2
-    m_Bits: 2048
-  currentXp: 0
-  currentCoins: 0
-  currentAtk: 0
-  money: {fileID: 0}
-  camHeight: 0
-  tick: 0
-  berserker: 0
   walkingSound: {fileID: 0}
---- !u!114 &1056566094
+--- !u!114 &5888918693958991060
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -461,29 +479,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAttack: 1
-  controller: {fileID: 3456131864871293787}
+  controller: {fileID: 8787378143022190807}
   animator: {fileID: 3456131865728768725}
   handAnimator: {fileID: 1730845439}
-  slashAnimator: {fileID: 614250912}
   smallSlashAnimator: {fileID: 614250912}
   bigSlashAnimator: {fileID: 296757352}
-  deathScreen: {fileID: 0}
-  attack: {fileID: 0}
+  attackRange: 0.5
+  totalLifes: 3
+  currentLifes: 3
+  currentDef: 0
+  currentXp: 0
+  currentCoins: 0
+  currentAtk: 0
   attackPoint: {fileID: 254886771}
   smallSlash: {fileID: 614250910}
   bigSlash: {fileID: 296757351}
-  slash: {fileID: 614250910}
-  poof: {fileID: 4800026081118939667, guid: eb49338eebffc7e47aa49385ce5e610d, type: 3}
+  deathScreen: {fileID: 0}
+  canTakeDamage: 1
+  poof: {fileID: 4800026081118939667, guid: 72db8c9939b4e9a49abafdcd619004e2, type: 3}
+  coins:
+    serializedVersion: 2
+    m_Bits: 1024
+  xp:
+    serializedVersion: 2
+    m_Bits: 2048
   enemies:
     serializedVersion: 2
     m_Bits: 512
-  canTakeDamage: 1
-  attackRange: 0.35
-  totalLifes: 0
-  currentDamage: 0
-  currentLifes: 0
-  currentDef: 0
-  timer: 0
+  attack: {fileID: 0}
+  laugh: {fileID: 0}
+  money: {fileID: 0}
 --- !u!1 &3456131865728768730
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,60 +1,48 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
 
 public class CharacterController2D : MonoBehaviour
 {
-    public Animator anim;
-    public Animator handAnim;
-    public PlayerCombat combat;
-    
-    // Move player in 2D space
-    public float maxSpeed = 3.4f;
-    public float jumpHeight = 6.5f;
-    public float gravityScale = 1.5f;
-    public Camera mainCamera;
-    int doubleJump =0;
-
-
-    bool facingRight = true;
-    float moveDirection = 0;
-    public bool isGrounded = false;
-    public bool isJumping = false;
-    public bool isMoving = false;
+    [SerializeField] Animator anim;
+    [SerializeField] Animator handAnim;
+    [SerializeField] PlayerCombat combat;
     Vector3 cameraPos;
     Rigidbody2D r2d;
     CapsuleCollider2D mainCollider;
     Transform t;
 
-    [SerializeField]  float knockBack;
+    [Header("Stats")]
+    [SerializeField] float maxSpeed = 3.4f;
+    [SerializeField] float jumpHeight = 6.5f;
+    [SerializeField] float gravityScale = 1.5f;
+
+    [Header("KnockBack")]
+    [SerializeField] float knockBack;
     public float knockbackLength;
     public float knockbackCount;
     public bool knockFromRight;
 
+    [Header("Camera")]
+    private Camera mainCamera;
+    [SerializeField] float camHeight;
 
-    private float maxXp = 1;
-    public LayerMask coins;
-    public LayerMask xp;
-    public float currentXp;
-    public int currentCoins;
-    public int currentAtk;
-    public AudioSource money;
-    public AudioSource laugh;
+    [Header("Movement Flags")]
+    public bool isGrounded = false;
+    public bool isJumping = false;
+    public bool isMoving = false;
 
-    public float camHeight;
-    public int tick;
-    public bool berserker = false;
-    int sk = 0;
+    [Header("Audio")]
+    [SerializeField] AudioSource walkingSound;
 
-    public AudioSource walkingSound;
-    // Use this for initialization
+    bool facingRight = true;
+    float moveDirection = 0;
+
     void Awake()
     {
-        currentXp = PlayerPrefs.GetFloat("PlayerCurrentXP");
-        currentCoins = PlayerPrefs.GetInt("PlayerCurrentMoney");
-
         t = transform;
         r2d = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<CapsuleCollider2D>();
@@ -62,6 +50,7 @@ public class CharacterController2D : MonoBehaviour
         r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         r2d.gravityScale = gravityScale;
         facingRight = t.localScale.x > 0;
+        mainCamera = Camera.main;
 
         if (mainCamera)
         {
@@ -69,40 +58,41 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateAnimator();
-        TakeMoney();
-        TakeXp();
         MovementControls();
         FlipPlayer();
         Jumping();
-        Berserk();
 
-        // Camera follow
         if (mainCamera)
         {
-            mainCamera.transform.position = new Vector3(t.position.x, t.position.y+camHeight, cameraPos.z);
-        }
-
-        if(currentXp >= maxXp && Input.GetKeyDown(KeyCode.Q))
-        {
-            berserker = true;
-            laugh.Play();
-
-        }
-        
+                mainCamera.transform.position = new Vector3(t.position.x, t.position.y + camHeight, cameraPos.z);
+        } 
     }
 
     void FixedUpdate()
     {
+        CheckGrounded();
+        Move();
+    }
+
+    private void Move()
+    {
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && knockbackCount <= 0)
+            r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
+
+        if (knockbackCount > 0)
+            KnockBack();
+    }
+
+    void CheckGrounded()
+    {
         Bounds colliderBounds = mainCollider.bounds;
         float colliderRadius = mainCollider.size.x * 0.4f * Mathf.Abs(transform.localScale.x);
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, colliderRadius * 0.9f, 0);
-        // Check if player is grounded
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheckPos, colliderRadius);
-        //Check if any of the overlapping colliders are not player collider, if so, set isGrounded to true
+
         isGrounded = false;
         if (colliders.Length > 0)
         {
@@ -111,7 +101,6 @@ public class CharacterController2D : MonoBehaviour
                 if (colliders[i] != mainCollider)
                 {
                     isGrounded = true;
-                    doubleJump = 0;
                     break;
                 }
             }
@@ -120,52 +109,18 @@ public class CharacterController2D : MonoBehaviour
         {
             walkingSound.Stop();
         }
-
-        // Apply movement velocity
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && knockbackCount <= 0)
-            r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
-
-        if (knockbackCount > 0)
-            KnockBack();
-
-        // Simple debug
-        Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, colliderRadius, 0), isGrounded ? Color.green : Color.red);
-        Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(colliderRadius, 0, 0), isGrounded ? Color.green : Color.red);
     }
 
-    void Berserk()
-    {
-        if (berserker)
-        {
-            if (sk == 0)
-            {
-                currentAtk+=2;
-                combat.slash = combat.bigSlash;
-                combat.slashAnimator = combat.bigSlashAnimator;
-                combat.attackRange += 2;
-                sk++;
-            }
-
-            currentXp -= 0.0008f;
-        }
-        if (currentXp <= 0 && berserker)
-        {
-            berserker = false;
-            currentAtk -= 2; ;
-            combat.slash = combat.smallSlash;
-            combat.slashAnimator = combat.smallSlashAnimator;
-            combat.attackRange -= 2;
-            sk = 0;
-        }
-    }
     void Jumping()
-    {
+    {   
         // Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && doubleJump<1)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
-            doubleJump++;
             walkingSound.Stop();
+        }
+        if (Input.GetKeyUp(KeyCode.Space) && r2d.velocity.y > 0) {
+            r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y/3);
         }
     }
 
@@ -193,7 +148,7 @@ public class CharacterController2D : MonoBehaviour
     void MovementControls()
     {
         // Movement controls
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && (isGrounded || Mathf.Abs(r2d.velocity.x) > 0.01f))
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
             moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
             if(!walkingSound.isPlaying && isGrounded)
@@ -201,36 +156,10 @@ public class CharacterController2D : MonoBehaviour
         }
         else
         {
-            if (isGrounded || r2d.velocity.magnitude < 0.01f)
-            {
+
                 moveDirection = 0;
                 walkingSound.Stop();
-            }
-        }
-    }
 
-    void TakeMoney()
-    {
-        Collider2D[] allCoins = Physics2D.OverlapCircleAll(transform.position, 0.2f, coins);
-
-        foreach (Collider2D coin in allCoins)
-        {
-            Destroy(coin.gameObject);
-            currentCoins++;
-            money.Play();
-        }
-    }
-
-    void TakeXp()
-    {
-        Collider2D[] allXp = Physics2D.OverlapCircleAll(transform.position, 0.2f, xp);
-
-        foreach (Collider2D particle in allXp)
-        {
-            Destroy(particle.gameObject);
-            currentXp+=0.1f;
-            if (currentXp > maxXp)
-                currentXp = maxXp;
         }
     }
 
