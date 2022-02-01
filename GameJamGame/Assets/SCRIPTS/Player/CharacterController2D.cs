@@ -34,6 +34,13 @@ public class CharacterController2D : MonoBehaviour
     public bool isGrounded = false;
     public bool isJumping = false;
     public bool isMoving = false;
+    public bool isCollidingWithWall = false;
+
+    [Header("Wall checks")]
+    public Transform wallCheck1;
+    public Transform wallCheck2;
+    public Transform wallCheck3;
+    public float distanceFromWall;
 
     [Header("Audio")]
     [SerializeField] AudioSource walkingSound;
@@ -79,7 +86,7 @@ public class CharacterController2D : MonoBehaviour
 
     private void Move()
     {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && knockbackCount <= 0)
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && knockbackCount <= 0 && !isCollidingWithWall)
             r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
 
         if (knockbackCount > 0)
@@ -179,5 +186,18 @@ public class CharacterController2D : MonoBehaviour
             r2d.velocity = new Vector2(knockBack, knockBack);
 
         knockbackCount -= Time.deltaTime;
+    }
+
+    void CheckWallCollision()
+    {
+        Vector2 moveDirectionVector = new Vector2(moveDirection, 0);
+        if (Physics2D.Raycast(wallCheck1.position, moveDirectionVector, distanceFromWall))
+            isCollidingWithWall = true;
+        else if(Physics2D.Raycast(wallCheck2.position, moveDirectionVector, distanceFromWall))
+            isCollidingWithWall = true;
+        else if (Physics2D.Raycast(wallCheck3.position, moveDirectionVector, distanceFromWall))
+            isCollidingWithWall = true;
+        else
+            isCollidingWithWall = false;
     }
 }

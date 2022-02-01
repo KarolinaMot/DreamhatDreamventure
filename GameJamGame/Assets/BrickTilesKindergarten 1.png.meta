@@ -1,0 +1,960 @@
+fileFormatVersion: 2
+guid: 1a3f1aa22f7faf74989203263c1f6c61
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7445925475906859009
+    second: BrickTilesKindergarten 1_0
+  - first:
+      213: -5072822771003319305
+    second: BrickTilesKindergarten 1_1
+  - first:
+      213: -3241604479302082330
+    second: BrickTilesKindergarten 1_2
+  - first:
+      213: -4327358505938499372
+    second: BrickTilesKindergarten 1_3
+  - first:
+      213: -3804065612785403156
+    second: BrickTilesKindergarten 1_4
+  - first:
+      213: 2448890931627625138
+    second: BrickTilesKindergarten 1_5
+  - first:
+      213: -5539759489346746476
+    second: BrickTilesKindergarten 1_6
+  - first:
+      213: -2820227174125330701
+    second: BrickTilesKindergarten 1_7
+  - first:
+      213: -1675026546916414776
+    second: BrickTilesKindergarten 1_8
+  - first:
+      213: -2303439612622532134
+    second: BrickTilesKindergarten 1_9
+  - first:
+      213: -6546009725443092769
+    second: BrickTilesKindergarten 1_10
+  - first:
+      213: -3255411265933811164
+    second: BrickTilesKindergarten 1_11
+  - first:
+      213: 8698748002995359632
+    second: BrickTilesKindergarten 1_12
+  - first:
+      213: -961227778646784718
+    second: BrickTilesKindergarten 1_13
+  - first:
+      213: 1788819011580989130
+    second: BrickTilesKindergarten 1_14
+  - first:
+      213: -9086852093625531716
+    second: BrickTilesKindergarten 1_15
+  - first:
+      213: 3770143610935759180
+    second: BrickTilesKindergarten 1_16
+  - first:
+      213: 2468683800049088404
+    second: BrickTilesKindergarten 1_17
+  - first:
+      213: -4984322417576315594
+    second: BrickTilesKindergarten 1_18
+  - first:
+      213: 6532376450683118545
+    second: BrickTilesKindergarten 1_19
+  - first:
+      213: 2997211334141274254
+    second: BrickTilesKindergarten 1_20
+  - first:
+      213: -3150366382371339212
+    second: BrickTilesKindergarten 1_21
+  - first:
+      213: 4084921487299968910
+    second: BrickTilesKindergarten 1_22
+  - first:
+      213: 5828389174909943509
+    second: BrickTilesKindergarten 1_23
+  - first:
+      213: 5596788557458246844
+    second: BrickTilesKindergarten 1_24
+  - first:
+      213: -2897023059607614893
+    second: BrickTilesKindergarten 1_25
+  - first:
+      213: 4663708350934312393
+    second: BrickTilesKindergarten 1_26
+  - first:
+      213: -6790890803079448645
+    second: BrickTilesKindergarten 1_27
+  - first:
+      213: 4373292162401973462
+    second: BrickTilesKindergarten 1_28
+  - first:
+      213: -8337652624090474831
+    second: BrickTilesKindergarten 1_29
+  - first:
+      213: 1741180178526735978
+    second: BrickTilesKindergarten 1_30
+  - first:
+      213: 3921341878360906438
+    second: BrickTilesKindergarten 1_31
+  - first:
+      213: -4674881442951778917
+    second: BrickTilesKindergarten 1_32
+  - first:
+      213: 7689598846678553512
+    second: BrickTilesKindergarten 1_33
+  - first:
+      213: -3977415335700416460
+    second: BrickTilesKindergarten 1_34
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 45
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 495
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fff4a88da32caa890800000000000000
+      internalID: -7445925475906859009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_1
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 495
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fb95d51196b999b0800000000000000
+      internalID: -5072822771003319305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_2
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 495
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e062ec96e18303d0800000000000000
+      internalID: -3241604479302082330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_3
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 495
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d845cdbd5222f3c0800000000000000
+      internalID: -4327358505938499372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_4
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 495
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceab5afda7e353bc0800000000000000
+      internalID: -3804065612785403156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_5
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 495
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ba0759d3553cf120800000000000000
+      internalID: 2448890931627625138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_6
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 495
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49743686812de13b0800000000000000
+      internalID: -5539759489346746476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 450
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fe1b5cc35a8cd8d0800000000000000
+      internalID: -2820227174125330701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_8
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 450
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8caa2b1fa3c11c8e0800000000000000
+      internalID: -1675026546916414776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_9
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 450
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad1121060e98800e0800000000000000
+      internalID: -2303439612622532134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_10
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 450
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fde46b246d6e725a0800000000000000
+      internalID: -6546009725443092769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_11
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 450
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 422e53893b472d2d0800000000000000
+      internalID: -3255411265933811164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_12
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 450
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09f4d25883928b870800000000000000
+      internalID: 8698748002995359632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_13
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 450
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23545899d6809a2f0800000000000000
+      internalID: -961227778646784718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 405
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ace00c8d96923d810800000000000000
+      internalID: 1788819011580989130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_15
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 405
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb28fe04a2405e180800000000000000
+      internalID: -9086852093625531716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_16
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 405
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c41d80a93ad325430800000000000000
+      internalID: 3770143610935759180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_17
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 405
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 497ffa426d6824220800000000000000
+      internalID: 2468683800049088404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_18
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 405
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 635f8565b2124dab0800000000000000
+      internalID: -4984322417576315594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_19
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 405
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d3281a95c9a7aa50800000000000000
+      internalID: 6532376450683118545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_20
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 405
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e88e34814db389920800000000000000
+      internalID: 2997211334141274254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_21
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 405
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4348c627776a744d0800000000000000
+      internalID: -3150366382371339212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_22
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 405
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8fffd9237e80b830800000000000000
+      internalID: 4084921487299968910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_23
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 405
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5de3d3f031992e050800000000000000
+      internalID: 5828389174909943509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_24
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 405
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc054a3a89cbad40800000000000000
+      internalID: 5596788557458246844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 360
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35a09f950e4bbc7d0800000000000000
+      internalID: -2897023059607614893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_26
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 360
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c566792902d8b040800000000000000
+      internalID: 4663708350934312393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_27
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 360
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb77bf55bc8e1c1a0800000000000000
+      internalID: -6790890803079448645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_28
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 360
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d438fe0d0e01bc30800000000000000
+      internalID: 4373292162401973462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_29
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 360
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b6db78fc15ba4c80800000000000000
+      internalID: -8337652624090474831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_30
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 315
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6e890fa52ae92810800000000000000
+      internalID: 1741180178526735978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_31
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 270
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ca909689a76b6630800000000000000
+      internalID: 3921341878360906438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_32
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 270
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d2bc1a81c7f1fb0800000000000000
+      internalID: -4674881442951778917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_33
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 225
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a35789e861f6ba60800000000000000
+      internalID: 7689598846678553512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrickTilesKindergarten 1_34
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 180
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 438b26f43d16dc8c0800000000000000
+      internalID: -3977415335700416460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
