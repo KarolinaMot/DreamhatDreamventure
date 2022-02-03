@@ -7,6 +7,10 @@ public class LevelGeneration : MonoBehaviour
 
     public Transform[] startingPositions;
     public GameObject[] rooms; //index 0 --> LR, index 1 --> LRB, index 2 --> LRT, index 3 -->LRBT
+    public GameObject pathRooms;
+    public GameObject sceneObjects;
+    Transform playerSpawn;
+    bool playerSpawned = false;
 
     private int direction;
     public float moveAmountX;
@@ -22,14 +26,16 @@ public class LevelGeneration : MonoBehaviour
     public LayerMask room;
 
     private int downCounter =0;
-
+    GameObject newRoom;
     public bool stopLevelGeneration = false;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         int randStartingPos = Random.Range(0, startingPositions.Length);
         transform.position = startingPositions[randStartingPos].position;
-        Instantiate(rooms[0], transform.position, Quaternion.identity);
+        playerSpawn = startingPositions[randStartingPos];
+        newRoom = Instantiate(rooms[0], transform.position, Quaternion.identity);
+        newRoom.transform.parent = pathRooms.transform;
 
         direction = Random.Range(1, 7);
     }
@@ -45,6 +51,12 @@ public class LevelGeneration : MonoBehaviour
         {
             timeBtwRoom -= Time.deltaTime;
         }
+
+        if (stopLevelGeneration && !playerSpawned)
+        {
+            Instantiate(sceneObjects, playerSpawn);
+            playerSpawned = true;
+        }
     }
     private void Move()
     {
@@ -55,8 +67,9 @@ public class LevelGeneration : MonoBehaviour
                 Vector2 newPos = new Vector2(transform.position.x + moveAmountX, transform.position.y);
                 transform.position = newPos;
 
-                int rand = Random.Range(0, rooms.Length);
-                Instantiate(rooms[rand], transform.position, Quaternion.identity);
+                int rand = Random.Range(0, 4);
+                newRoom = Instantiate(rooms[rand], transform.position, Quaternion.identity);
+                newRoom.transform.parent = pathRooms.transform;
 
                 direction = Random.Range(1, 7);
                 if(direction == 3) { direction = 2;}
@@ -72,9 +85,9 @@ public class LevelGeneration : MonoBehaviour
                 Vector2 newPos = new Vector2(transform.position.x - moveAmountX, transform.position.y);
                 transform.position = newPos;
 
-                int rand = Random.Range(0, rooms.Length);
-                Instantiate(rooms[rand], transform.position, Quaternion.identity);
-
+                int rand = Random.Range(0, 4);
+                newRoom = Instantiate(rooms[rand], transform.position, Quaternion.identity);
+                newRoom.transform.parent = pathRooms.transform;
                 direction = Random.Range(3, 7);
             }
             else { direction = 5; }
@@ -85,12 +98,13 @@ public class LevelGeneration : MonoBehaviour
             {
                 Collider2D roomDetection = Physics2D.OverlapCircle(transform.position, 1, room);
 
-                if(roomDetection.GetComponent<RoomType>().type != 3 && roomDetection.GetComponent<RoomType>().type != 1)
+                if (roomDetection.GetComponent<RoomType>().type != 3 && roomDetection.GetComponent<RoomType>().type != 1)
                 {   
                     if(downCounter >=2)
                     {
                         roomDetection.GetComponent<RoomType>().RoomDestruction();
-                        Instantiate(rooms[3], transform.position, Quaternion.identity);
+                        newRoom = Instantiate(rooms[3], transform.position, Quaternion.identity);
+                        newRoom.transform.parent = pathRooms.transform;
                     }
                     else
                     {
@@ -101,7 +115,8 @@ public class LevelGeneration : MonoBehaviour
                         {
                             randBottomRoom = 1;
                         }
-                        Instantiate(rooms[randBottomRoom], transform.position, Quaternion.identity);
+                        newRoom = Instantiate(rooms[randBottomRoom], transform.position, Quaternion.identity);
+                        newRoom.transform.parent = pathRooms.transform;
                     }                    
                 }
 
@@ -109,7 +124,8 @@ public class LevelGeneration : MonoBehaviour
                 transform.position = newPos;
 
                 int rand = Random.Range(2, 4);
-                Instantiate(rooms[rand], transform.position, Quaternion.identity);
+                newRoom = Instantiate(rooms[rand], transform.position, Quaternion.identity);
+                newRoom.transform.parent = pathRooms.transform;
 
                 direction = Random.Range(1, 5);
             }
