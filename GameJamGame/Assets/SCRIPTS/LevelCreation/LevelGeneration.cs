@@ -28,14 +28,14 @@ public class LevelGeneration : MonoBehaviour
     GameObject newRoom;
     public bool stopLevelGeneration = false;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         int randStartingPos = Random.Range(0, startingPositions.Length);
         transform.position = startingPositions[randStartingPos].position;
-        player.position = startingPositions[randStartingPos].position;
+        //player.position = startingPositions[randStartingPos].position;
         newRoom = Instantiate(rooms[0], transform.position, Quaternion.identity);
         newRoom.transform.parent = pathRooms.transform;
-
+        player.position = newRoom.GetComponent<RoomType>().spawnPlace.transform.position;
         direction = Random.Range(1, 7);
     }
 
@@ -53,6 +53,7 @@ public class LevelGeneration : MonoBehaviour
 
         if (stopLevelGeneration && !playerSpawned)
         {
+            //transform.parent.localScale = new Vector3(2, 2, transform.parent.localScale.z);
             player.gameObject.SetActive(true);
             playerSpawned = true;
         }
