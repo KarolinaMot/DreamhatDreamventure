@@ -100,7 +100,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1669111665
-  m_SortingLayer: 6
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 708df7b6f8ecdfc468431276a4782f71, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -202,7 +202,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1669111665
-  m_SortingLayer: 6
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6a4ac1824317f1a4c816860df635fe80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -304,7 +304,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1669111665
-  m_SortingLayer: 6
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d81a01331dfdc64479f5e06e173c72ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -355,7 +355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3456131864871293780
 Transform:
   m_ObjectHideFlags: 0
@@ -453,6 +453,19 @@ MonoBehaviour:
   handAnimator: {fileID: 1730845439}
   smallSlashAnimator: {fileID: 614250912}
   bigSlashAnimator: {fileID: 296757352}
+  damageTakingRadiusX: 0.75
+  damageTakingRadiusY: 1.26
+  damageTakingRadiusOffsetX: 0.14
+  damageTakingRadiusOffsetY: -0.07
+  allEnemies:
+  - {fileID: 2355443774595043157, guid: cc33cbe1b08978349bc2fc595f5d0772, type: 3}
+  - {fileID: 7732138174737872527, guid: 98af8756126654e4491bb3995ef71ea1, type: 3}
+  - {fileID: 3391159563207599076, guid: 5f0427c4dc4dadb4cb200b8ac7f92b8b, type: 3}
+  - {fileID: 2834104837611698606, guid: 2d7aafab697a9f44c81e08520e202d55, type: 3}
+  - {fileID: 1082310301266645718, guid: 30f94a0ab5db7c0459869ab11d37a542, type: 3}
+  - {fileID: 192090391081222552, guid: fc07f556af5cbef45b735559887d06ff, type: 3}
+  - {fileID: 5435661305814016491, guid: 75df2e3e8fb9e254bb8b7a55457fc3d4, type: 3}
+  - {fileID: 3020787452724116888, guid: cf0cdfdec3155004dbef808e6179f7ef, type: 3}
   attackRange: 0.5
   totalLifes: 3
   currentLifes: 3
@@ -571,7 +584,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -545378893
-  m_SortingLayer: 5
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 61722b8f554956d46936e887ae7f1b27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

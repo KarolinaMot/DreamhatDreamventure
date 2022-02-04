@@ -16,6 +16,15 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] Animator smallSlashAnimator;
     [SerializeField] Animator bigSlashAnimator;
 
+    [Header("Damage taking box")]
+    [SerializeField] float damageTakingRadiusX = 0.2f;
+    [SerializeField] float damageTakingRadiusY = 0.2f;
+    [SerializeField] float damageTakingRadiusOffsetX = 0.2f;
+    [SerializeField] float damageTakingRadiusOffsetY = 0.2f;
+
+    [Header("Enemies")]
+    [SerializeField] GameObject[] allEnemies;
+
     [Header("Stats")]
     [SerializeField] float attackRange = 0.5f;
     public int totalLifes;
@@ -54,7 +63,6 @@ public class PlayerCombat : MonoBehaviour
     Animator slashAnimator;
     GameObject slash;
 
-
     private void Awake()
     {
         if (SceneManager.GetActiveScene().buildIndex != 1)
@@ -89,8 +97,8 @@ public class PlayerCombat : MonoBehaviour
         }
 
         TakeMoney();
-        TakeXp();
         TakeDamage();
+        TakeXp();
         Tick();
         if(slash.activeSelf)
             CheckAnimationEnd();
@@ -121,11 +129,9 @@ public class PlayerCombat : MonoBehaviour
             else
             {
                 enemy.GetComponent<Enemy>().TakeDamage(currentAtk);
-            }
-            
+            }            
         }
     }
-
     void TakeMoney()
     {
         Collider2D[] allCoins = Physics2D.OverlapCircleAll(transform.position, 0.2f, coins);
@@ -137,7 +143,6 @@ public class PlayerCombat : MonoBehaviour
             money.Play();
         }
     }
-
     void TakeXp()
     {
         Collider2D[] allXp = Physics2D.OverlapCircleAll(transform.position, 0.2f, xp);
@@ -150,7 +155,6 @@ public class PlayerCombat : MonoBehaviour
                 currentXp = maxXp;
         }
     }
-
     void Berserk()
     {
         if (berserker)
@@ -176,40 +180,15 @@ public class PlayerCombat : MonoBehaviour
             sk = 0;
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.name== "bosscrushingarm")
-        {
-            if (canTakeDamage)
-            {
-                Debug.Log("damage taken");
-                controller.knockbackCount = controller.knockbackLength;
-
-                if (collision.transform.position.x > transform.position.x)
-                    controller.knockFromRight = true;
-                else
-                    controller.knockFromRight = false;
-
-                currentLifes--;
-                canTakeDamage = false;
-            }
-
-            if (currentLifes <= 0)
-            {
-                Death();
-            }
-        }
-    }
     void TakeDamage()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 0.2f, enemies);
+        Collider2D[] enemiesObj = Physics2D.OverlapBoxAll(transform.position, new Vector2(damageTakingRadiusX, damageTakingRadiusY), enemies); 
 
-        foreach (Collider2D enemy in hitEnemies)
+        foreach (Collider2D enemy in enemiesObj)
         {
-            if (canTakeDamage)
+
+            if (canTakeDamage && CheckEnemyArray(enemy.gameObject.name))
             {
-                Debug.Log("damage taken");
                 controller.knockbackCount = controller.knockbackLength;
 
                 if (enemy.transform.position.x > transform.position.x)
@@ -220,32 +199,29 @@ public class PlayerCombat : MonoBehaviour
                 currentLifes--;
                 canTakeDamage = false;
             }
-        }
 
-        if(currentLifes <= 0)
-        {
-            Death();
+
+            if (currentLifes <= 0)
+            {
+                Death();
+            }
         }
     }
-
     void Death()
     {
         Instantiate(poof, transform.position, Quaternion.identity);
         Destroy(gameObject);
         Time.timeScale = 0;
         deathScreen.SetActive(true);
-       
     }
-
     private void OnDrawGizmosSelected()
     {
         if(attackPoint != null)
         {
             Gizmos.DrawWireSphere(attackPoint.position, attackRange);
         }
-        
+        Gizmos.DrawWireCube(new Vector3(transform.position.x+damageTakingRadiusOffsetX, transform.position.y+damageTakingRadiusOffsetY, transform.position.z),  new Vector3(damageTakingRadiusX, damageTakingRadiusY, 0));
     }
-
     void CheckAnimationEnd()
     {      if(slashAnimator.GetCurrentAnimatorStateInfo(0).IsName("Empty"))
                 slash.SetActive(false);        
@@ -261,5 +237,15 @@ public class PlayerCombat : MonoBehaviour
                 timer = 0;
             }
         }        
+    }
+    private bool CheckEnemyArray(string name)
+    {
+        foreach(GameObject enemy in allEnemies)
+        {
+            if (enemy.name == name)
+                return true;
+        }
+
+        return false;
     }
 }

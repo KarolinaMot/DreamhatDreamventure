@@ -8,9 +8,8 @@ public class LevelGeneration : MonoBehaviour
     public Transform[] startingPositions;
     public GameObject[] rooms; //index 0 --> LR, index 1 --> LRB, index 2 --> LRT, index 3 -->LRBT
     public GameObject pathRooms;
-    public GameObject sceneObjects;
-    Transform playerSpawn;
-    bool playerSpawned = false;
+    public Transform player;
+    bool playerSpawned;
 
     private int direction;
     public float moveAmountX;
@@ -33,7 +32,7 @@ public class LevelGeneration : MonoBehaviour
     {
         int randStartingPos = Random.Range(0, startingPositions.Length);
         transform.position = startingPositions[randStartingPos].position;
-        playerSpawn = startingPositions[randStartingPos];
+        player.position = startingPositions[randStartingPos].position;
         newRoom = Instantiate(rooms[0], transform.position, Quaternion.identity);
         newRoom.transform.parent = pathRooms.transform;
 
@@ -54,7 +53,7 @@ public class LevelGeneration : MonoBehaviour
 
         if (stopLevelGeneration && !playerSpawned)
         {
-            Instantiate(sceneObjects, playerSpawn);
+            player.gameObject.SetActive(true);
             playerSpawned = true;
         }
     }
@@ -135,6 +134,5 @@ public class LevelGeneration : MonoBehaviour
             }
             
         }
-        Debug.Log(direction);
     }
 }
